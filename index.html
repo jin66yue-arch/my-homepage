@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080b16">
+  <meta name="description" content="我的个人主页，记录想法、兴趣与成长。">
+  <title>我的主页 | DIGITAL SPACE</title>
+  <style>
+    :root {
+      --bg: #080b16;
+      --panel: rgba(18, 25, 46, .72);
+      --text: #f1f5ff;
+      --muted: #9aa8c7;
+      --blue: #65e0ff;
+      --purple: #9d83ff;
+      --border: rgba(143, 166, 255, .19);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 5%, #18265a 0, transparent 35%),
+        radial-gradient(ellipse at 90% 35%, #29154c 0, transparent 30%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(100% - 36px, 1000px);
+      margin: auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 2px;
+      font-size: 17px;
+    }
+
+    .brand span { color: var(--blue); }
+
+    .status {
+      color: var(--blue);
+      font-size: 12px;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      border-radius: 30px;
+      background: rgba(101, 224, 255, .06);
+    }
+
+    .hero {
+      padding: 90px 0 72px;
+      position: relative;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-size: 12px;
+      letter-spacing: 4px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 76px);
+      line-height: 1.16;
+      margin: 20px 0;
+      letter-spacing: -2px;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, var(--blue), var(--purple), #f0a6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .intro {
+      max-width: 580px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 14px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn.primary {
+      color: #08101c;
+      background: linear-gradient(100deg, var(--blue), #a5b0ff);
+      font-weight: 800;
+      border: 0;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(101, 224, 255, .15);
+    }
+
+    .section { padding: 32px 0 56px; }
+
+    .section-head { margin-bottom: 24px; }
+
+    .section-head small {
+      color: var(--blue);
+      letter-spacing: 3px;
+      font-size: 11px;
+    }
+
+    h2 {
+      font-size: 27px;
+      margin: 5px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 23px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 18px;
+      backdrop-filter: blur(14px);
+      transition: border-color .25s, transform .25s;
+    }
+
+    .card:hover {
+      border-color: rgba(101, 224, 255, .6);
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .quote {
+      padding: 28px;
+      border-left: 3px solid var(--blue);
+      border-radius: 0 16px 16px 0;
+      background: linear-gradient(90deg, rgba(101, 224, 255, .08), transparent);
+      color: #d8e2ff;
+      font-size: 18px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: #68f5c2;
+      box-shadow: 0 0 12px #68f5c2;
+    }
+
+    .reveal {
+      animation: appear .8s ease both;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 680px) {
+      .hero { padding: 66px 0 48px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      h1 { letter-spacing: -1.5px; }
+      .section { padding-bottom: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#">MY<span>.</span>SPACE</a>
+      <span class="status"><span class="dot"></span>个人空间已上线</span>
+    </nav>
+
+    <main>
+      <section class="hero reveal">
+        <div class="eyebrow">WELCOME TO MY DIGITAL WORLD</div>
+        <h1>探索世界，<br><span class="gradient">创造可能。</span></h1>
+        <p class="intro">
+          你好，欢迎来到浸月的个人主页。这里记录我的想法、兴趣和成长。
+          保持好奇，持续学习，把每一个新想法变成现实。
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#about">认识一下浸月 ↗</a>
+          <a class="btn" href="#interests">探索我的兴趣</a>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-head">
+          <small>01 / ABOUT ME</small>
+          <h2>关于浸月</h2>
+        </div>
+        <div class="quote">
+          不断学习新东西，勇敢尝试未知的领域。
+          每一次积累，都会让未来多一种可能。
+        </div>
+      </section>
+
+      <section class="section" id="interests">
+        <div class="section-head">
+          <small>02 / WHAT I LIKE</small>
+          <h2>我的兴趣</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">⌘</div>
+            <h3>科技与 AI</h3>
+            <p>关注新技术与人工智能，探索工具如何让想法变成现实。</p>
+          </article>
+          <article class="card">
+            <div class="icon">◈</div>
+            <h3>设计与创造</h3>
+            <p>喜欢有质感的视觉设计，也享受从零开始创造的过程。</p>
+          </article>
+          <article class="card">
+            <div class="icon">↗</div>
+            <h3>持续成长</h3>
+            <p>保持好奇，主动学习，让每一天都积累一点新的经验。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="goals">
+        <div class="section-head">
+          <small>03 / NEXT LEVEL</small>
+          <h2>正在前进</h2>
+        </div>
+        <div class="card">
+          <h3>把想法变成作品</h3>
+          <p>
+            从学习网页制作开始，逐步掌握更多数字工具。
+            这个网站就是我的第一个小小起点，未来还会不断更新。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 MY.SPACE</span>
+      <span>用好奇心构建未来 ✦</span>
+    </footer>
+  </div>
+</body>
+</html>
